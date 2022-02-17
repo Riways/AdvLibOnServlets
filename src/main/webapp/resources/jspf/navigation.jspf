@@ -1,0 +1,46 @@
+
+<%@ include file="/resources/jspf/taglib.jspf"%>
+
+<div>
+	<nav class="navbar navbar-expand-sm" id="navigation-bar">
+
+		<div>
+			<div class="d-inline-block ms-3 align-middle">
+				<a href="controller?command=welcome"> <img
+					src="${pageContext.request.contextPath}/resources/static/Images/Nippon_Family_Book_logo.svg"
+					style="width: 40px">
+				</a>
+			</div>
+			<h1 class="d-inline-block align-middle">AdvLib</h1>
+		</div>
+		
+		
+		
+		
+
+<!-- 		<div sec:authorize="isAuthenticated()"
+			class="position-absolute end-0 align-middle">
+			<img th:src="@{Images/person.svg}" style="height: 42px"
+				class="align-top">
+
+			<div class="nav-item dropdown d-inline-block">
+				<a class="nav-link dropdown-toggle " href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> <span sec:authentication="name">Bob</span>
+				</a>
+				<div class="dropdown-menu position-absolute start-0"
+					aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="/userPage">Upload Book</a> <a
+						class="dropdown-item" href="/logout">Logout</a>
+				</div>
+			</div>
+		</div>
+		<div sec:authorize="!isAuthenticated()"
+			class="position-absolute end-0 align-middle me-4">
+			<a href="@{/login}">Log In</a>
+		</div> -->
+
+
+	</nav>
+
+</div>

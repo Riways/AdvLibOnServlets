@@ -3,7 +3,7 @@
   <display-name>AdvLibs</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
-    <welcome-file>/WEB-INF/resources/jsp/index.jsp</welcome-file>
+    <welcome-file>/resources/jsp/index.jsp</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.jsp</welcome-file>

@@ -14,7 +14,7 @@ public class CommandContainer {
 	public static Command getCommand(String commandName) {
 	
 		if(commandName == null || !commands.containsKey(commandName)) {
-			return null;
+			return commands.get("welcome");
 		}
 		return commands.get(commandName);
 		
