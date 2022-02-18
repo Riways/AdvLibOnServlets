@@ -43,7 +43,7 @@ public class FrontController extends HttpServlet{
 		Command commandFromContainer = CommandContainer.getCommand(comandFromRequest);
 		
 		//getting path
-		String path = commandFromContainer.execute(req, resp);
+		String path = commandFromContainer.execute(req, resp, action);
 		
 		if(path == null) {
 			LOGGER.debug("Command not found");

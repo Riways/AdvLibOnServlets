@@ -41,18 +41,21 @@
 		</table>
 	</div>
 
-<%-- 	<c:choose test>
-		<c:when test="${use}">
-		
+<%-- 	<c:choose>
+		<c:when test="${empty userRole}">
+			<form action="controller">
+				<c:set var="userRole" scope="session" value="client"></c:set>
+				<input type="submit" value="Become client">
+			</form>
 		</c:when>
 		<c:otherwise>
-		
+			<form action="controller">
+				<c:set var="userRole" scope="session" value=""></c:set>
+				<input type="submit" value="unlog">
+			</form>
 		</c:otherwise>
 	</c:choose> --%>
 
-	<form action="controller" method=get>
-		<input type="hidden" name="command" value="welcome"> <input
-			type="submit" value="Welcome page">
-	</form>
+
 </body>
 </html>

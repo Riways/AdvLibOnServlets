@@ -9,6 +9,7 @@ public class CommandContainer {
 	
 	static {
 		commands.put("welcome", new WelcomeCommand());
+		commands.put("login", new LoginCommand());
 	}
 	
 	public static Command getCommand(String commandName) {

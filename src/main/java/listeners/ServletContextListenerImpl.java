@@ -17,9 +17,11 @@ public class ServletContextListenerImpl implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		
+		System.out.println("Servlet context initialization");
 		ServletContext context = sce.getServletContext();
 		initLog4J(context);
 		initCommandContainer();
+		LOGGER.trace("Servlet context initialization completed");
 	}
 
 	@Override
@@ -39,14 +41,15 @@ public class ServletContextListenerImpl implements ServletContextListener {
 	}
 
 	private void initCommandContainer() {
-		System.out.println("Servlet context initialization");
+		LOGGER.trace("Command container class initialization");
 		try {
 			Class.forName("command.CommandContainer");
 		} catch (ClassNotFoundException ex) {
-			System.out.println(ex.getMessage());
+			LOGGER.debug(ex.getMessage());
 		}
 		LOGGER.trace("Command container class loaded");
-		LOGGER.trace("Servlet context initialization completed");
+		
 	}
+
 
 }
