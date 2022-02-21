@@ -17,6 +17,9 @@ public class LoginCommand implements Command {
 
 	private static final Logger LOGGER = Logger.getLogger(LoginCommand.class);
 
+	/**
+	 * post request processing
+	 */
 	private String doPost(HttpServletRequest req, HttpServletResponse res) {
 
 		String page = null;
@@ -30,19 +33,20 @@ public class LoginCommand implements Command {
 
 		User user = userDao.getUserByUsername(username);
 
+		/**
+		 * Checking 'user' parameter on null &&  password correctness
+		 * 
+		 */
 		if (user == null) {
-			LOGGER.debug("User not found");
-			req.setAttribute("errorMessage", "Cannot find user with such username");
-			page = Path.LOGIN_PAGE;
+			page = Path.REDIRECT_TO_LOGIN_PAGE + Path.ERROR_MESSAGE +"Cannot find user with such username";
 			return page;
-		} else if (password != user.getPassword()) {
+		} else if (!password.equals(user.getPassword())) {
 			LOGGER.debug("Password incorrect");
-			req.setAttribute("errorMessage", "Password incorrect");
-			page = Path.LOGIN_PAGE;
+			page = Path.REDIRECT_TO_LOGIN_PAGE + Path.ERROR_MESSAGE + "Password incorrect";
 			return page;
 		}
 
-		page = Path.WELCOME_PAGE;
+		page = Path.REDIRECT_TO_WELCOME_PAGE;
 		
 		Role role = user.getRole();
 		LOGGER.trace("user role: " + role);
@@ -67,5 +71,6 @@ public class LoginCommand implements Command {
 			return	doPost(req, res);
 		}
 	}
+	
 
 }

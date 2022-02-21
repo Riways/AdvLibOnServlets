@@ -14,8 +14,9 @@
 	<div class="container-sm text-center">
 
 		<%@ include file="/resources/jspf/navigation.jspf"%>
-
+	
 		<h3 class="mt-5">Uploaded books</h3>
+		
 		<table class="table">
 			<thead>
 				<tr>
@@ -56,6 +57,7 @@
 		</c:otherwise>
 	</c:choose> --%>
 
+<%@ include file="/resources/jspf/bootstrap_scripts.jspf"%>
 
 </body>
 </html>

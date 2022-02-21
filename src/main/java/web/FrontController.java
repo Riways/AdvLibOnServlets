@@ -37,7 +37,7 @@ public class FrontController extends HttpServlet{
 		
 		//get command attribute from request
 		String comandFromRequest = (String)req.getParameter("command");
-		LOGGER.debug("Command get: " + comandFromRequest);
+		LOGGER.debug("Command get: " + comandFromRequest + ", action type: " + action.name());
 		
 		//get command from command container
 		Command commandFromContainer = CommandContainer.getCommand(comandFromRequest);

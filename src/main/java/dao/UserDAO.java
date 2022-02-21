@@ -12,4 +12,6 @@ public interface UserDAO {
 	
 	public void closeConnection();
 	
+	public boolean isUsernameAlreadyTaken(String username);
+	
 }

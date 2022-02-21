@@ -35,9 +35,13 @@
 					<input type="submit" value="Login" class="btn btn-primary" /> or <a
 						href="controller?command=registration">Register</a>
 				</p>
-				<c:if test="${!empty errorMessage}">
+				
+				<c:if test="${!empty param.errorMessage}">
 					<p class="alert alert-danger" role="alert">Wrong user or
 						password</p>
+				</c:if>
+				<c:if test="${!empty param.successMessage}">
+					<p class="alert alert-success" role="alert">${param.successMessage}</p>
 				</c:if>
 				
 

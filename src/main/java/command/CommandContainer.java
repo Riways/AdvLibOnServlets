@@ -10,6 +10,8 @@ public class CommandContainer {
 	static {
 		commands.put("welcome", new WelcomeCommand());
 		commands.put("login", new LoginCommand());
+		commands.put("registration", new RegistrationCommand());
+		commands.put("logout", new LogoutCommand());
 	}
 	
 	public static Command getCommand(String commandName) {
@@ -18,7 +20,6 @@ public class CommandContainer {
 			return commands.get("welcome");
 		}
 		return commands.get(commandName);
-		
 		
 	}
 	

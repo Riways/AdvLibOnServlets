@@ -4,7 +4,7 @@
 
 	 <Resource name="jdbc/adv_lib" auth="Container"
 	 	type="javax.sql.DataSource" username="bestuser" password="bestuser"
-	 	driverClassName="com.mysql.jdbc.Driver" defaultAutoCommit="true"
+	 	driverClassName="com.mysql.cj.jdbc.Driver" defaultAutoCommit="true"
 	 	defaultTransactionIsolation="READ_COMMITTED"
 	 	url="jdbc:mysql://localhost:3306/adv_lib?useSSL=false" maxActive="32" maxWait="10000" maxIdle="8"/>
 

@@ -22,10 +22,10 @@ import org.apache.log4j.Logger;
 
 @WebFilter(servletNames = "FrontController",
 		initParams = {
-				@WebInitParam(name = "admin", value = "adminCommand"),
-				@WebInitParam(name = "client", value = "clientCommand"),
-				@WebInitParam(name = "common", value = "commonCommand"),
-				@WebInitParam(name = "unlogged", value = "loginCommand")
+				@WebInitParam(name = "admin", value = RolesCommands.ADMIN_COMMANDS),
+				@WebInitParam(name = "client", value = RolesCommands.CLIENT_COMMANDS),
+				@WebInitParam(name = "common", value = RolesCommands.COMMON_COMMANDS),
+				@WebInitParam(name = "unlogged", value = RolesCommands.UNLOGGED_COMMANDS)
 		})
 public class AccessFilter implements Filter {
 	
@@ -35,7 +35,9 @@ public class AccessFilter implements Filter {
 	private static List<String> commons = new ArrayList<String>();
 	private static List<String> unlogged= new ArrayList<String>();
 	
-	
+	/**
+	 * filter intialization
+	 */
 	@Override
 	public void init(FilterConfig conf) throws ServletException {
 		LOGGER.debug("Filter initialization starts");
@@ -56,6 +58,9 @@ public class AccessFilter implements Filter {
 		
 	}
 	
+	/**
+	 * filter processing
+	 */
 	@Override
 	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2)
 			throws IOException, ServletException {
@@ -73,6 +78,9 @@ public class AccessFilter implements Filter {
 		}
 	}
 	
+	/**
+	 * Checking the user for access to a resource
+	 */
 	private boolean accessAllowed(ServletRequest request) {
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
@@ -106,6 +114,11 @@ public class AccessFilter implements Filter {
 		return accessMap.get(userRole).contains(commandName) || commons.contains(commandName);
 	}
 	
+	/**
+	 * Cutting string on tokens divided by ' ' symbol, and put them in container 
+	 * @param str string obtained from the parameter in init method
+	 * @return
+	 */
 	private List<String> asList(String str) {
 		List<String> list = new ArrayList<String>();
 		StringTokenizer st = new StringTokenizer(str);

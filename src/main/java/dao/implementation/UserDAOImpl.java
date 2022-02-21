@@ -29,14 +29,21 @@ public class UserDAOImpl implements UserDAO {
 
 		User user = null;
 
+		ResultSet resSet = null;
+
 		try (PreparedStatement prepSttmnt = connection.prepareStatement(Query.SELECT_USER_BY_USERNAME)) {
 			prepSttmnt.setString(1, username);
-			
-			ResultSet resSet = prepSttmnt.executeQuery();
-		
-			resSet.next();
-			
-			LOGGER.debug("user " + username + " find.");
+
+			resSet = prepSttmnt.executeQuery();
+
+			// Checking on empty result && moving pointer on first position, if result not
+			// empty
+			if (!resSet.next()) {
+				LOGGER.debug("user " + username + " not found.");
+				return null;
+			}
+
+			LOGGER.debug("user " + username + " found.");
 			Role role = null;
 			// getting user role
 			role = resSet.getString("role").equals("client") ? Role.CLIENT : Role.ADMIN;
@@ -46,6 +53,11 @@ public class UserDAOImpl implements UserDAO {
 			e.printStackTrace();
 			LOGGER.error(e.getMessage());
 		} finally {
+			try {
+				resSet.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			closeConnection();
 		}
 
@@ -79,18 +91,34 @@ public class UserDAOImpl implements UserDAO {
 		connection = ConnectionPool.getConnection();
 
 		try (PreparedStatement prepSttmnt = connection.prepareStatement(Query.DELETE_USER_BY_ID)) {
-			
+
 			prepSttmnt.setInt(1, userID);
-			
+
 			prepSttmnt.executeUpdate();
 			LOGGER.debug("user: " + userID + " deleted");
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			LOGGER.error(e.getMessage());
 		} finally {
 			closeConnection();
 		}
+	}
+
+	/**
+	 * checking is same username exists in database,
+	 * @return true if it already taken by another user
+	 */
+	@Override
+	public boolean isUsernameAlreadyTaken(String username) {
+		
+		if(getUserByUsername(username) == null) {
+			LOGGER.debug(username + " is not taken by another user");
+			return false;
+		}
+		
+		LOGGER.debug(username + " is taken by another user, use another username");
+		return true;
 	}
 
 	/**
@@ -101,10 +129,8 @@ public class UserDAOImpl implements UserDAO {
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				LOGGER.error(e.getMessage());
 			}
 		}
 	}
-
 }

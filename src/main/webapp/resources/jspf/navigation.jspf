@@ -29,12 +29,12 @@
 					<div class="nav-item dropdown d-inline-block">
 						<a class="nav-link dropdown-toggle " href="#" id="navbarDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <span sec:authentication="name">Bob</span>
+							aria-expanded="false"> <span><c:out value="${user.username}"/></span>
 						</a>
 						<div class="dropdown-menu position-absolute start-0"
 							aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="/userPage">Upload Book</a> <a
-								class="dropdown-item" href="/logout">Logout</a>
+								class="dropdown-item" href="controller?command=logout">Logout</a>
 						</div>
 					</div>
 				</div>
