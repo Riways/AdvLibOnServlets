@@ -6,6 +6,7 @@ public enum Role {
 	CLIENT, ADMIN;
 	
 	public String getName(){
-		return name().toLowerCase();
+		String name = name().toLowerCase();
+		return name;
 	}
 }

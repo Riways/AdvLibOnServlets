@@ -5,8 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import constants.Path;
 import web.ActionType;
-import web.Path;
 
 public class LogoutCommand implements Command {
 

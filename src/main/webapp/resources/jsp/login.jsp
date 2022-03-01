@@ -35,7 +35,7 @@
 					<input type="submit" value="Login" class="btn btn-primary" /> or <a
 						href="controller?command=registration">Register</a>
 				</p>
-				
+				<!-- <input type="checkbox" name="rememberMeCheckbox"> Remember me -->
 				<c:if test="${!empty param.errorMessage}">
 					<p class="alert alert-danger" role="alert">Wrong user or
 						password</p>

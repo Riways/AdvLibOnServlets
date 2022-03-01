@@ -20,6 +20,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
+import constants.RolesCommands;
+
 @WebFilter(servletNames = "FrontController",
 		initParams = {
 				@WebInitParam(name = "admin", value = RolesCommands.ADMIN_COMMANDS),

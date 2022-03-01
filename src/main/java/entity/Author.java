@@ -1,55 +1,67 @@
 package entity;
 
 
-import java.util.List;
-
 public class Author {
 
-    private int id;
+	private int id;
 
-    private String fullName;
+	private String firstName;
 
-    private List<BookFromLibrary> authorBooks;
+	private String lastName;
 
-    public Author() {
-    }
+	/* private List<BookFromLibrary> authorBooks; */
 
+	public Author() {
+	}
 
-    public Author( String fullName) {
-        this.fullName = fullName;
+	public Author(String firstName, String lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
 
-    }
+	}
+	
+	public Author(int id, String firstName, String lastName) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		
+	}
 
-    public int getId() {
-        return id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public String getFullName() {
-        return fullName;
-    }
+	public String getFirstName() {
+		return firstName;
+	}
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-    public List<BookFromLibrary> getAuthorBooks() {
-        return authorBooks;
-    }
+	public String getLastName() {
+		return lastName;
+	}
 
-    public void setAuthorBooks(List<BookFromLibrary> authorBooks) {
-        this.authorBooks = authorBooks;
-    }
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-    @Override
-    public String toString() {
-        return "Author{" +
-                "id=" + id +
-                ", fullName='" + fullName + '\'' +
-                ", authorBooks=" + authorBooks +
-                '}';
-    }
+	/*
+	 * public List<BookFromLibrary> getAuthorBooks() { return authorBooks; }
+	 * 
+	 * public void setAuthorBooks(List<BookFromLibrary> authorBooks) {
+	 * this.authorBooks = authorBooks; }
+	 */
+
+	@Override
+	public String toString() {
+		return "Author [firstName=" + firstName + ", lastName=" + lastName + "]";
+	}
+
+	
 }

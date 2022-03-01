@@ -7,8 +7,6 @@ public class BookFromLibrary {
 
     private String bookName;
 
-    private int wordsInBook;
-
     private Author author;
 
     private String fileName;
@@ -18,14 +16,22 @@ public class BookFromLibrary {
     public BookFromLibrary() {
     }
 
-    public BookFromLibrary(String bookName, int wordsInBook, Author author, String fileName, String pathToFile) {
-        this.bookName = bookName;
-        this.wordsInBook = wordsInBook;
+    public BookFromLibrary(int id, String bookName,  Author author, String fileName, String pathToFile) {
+        this.id = id;
+    	this.bookName = bookName;
         this.author = author;
         this.fileName = fileName;
         this.pathToFile = pathToFile;
     }
 
+    
+    public BookFromLibrary(String bookName,  Author author, String fileName, String pathToFile) {
+    	this.bookName = bookName;
+    	this.author = author;
+    	this.fileName = fileName;
+    	this.pathToFile = pathToFile;
+    }
+    
     public int getId() {
         return id;
     }
@@ -40,14 +46,6 @@ public class BookFromLibrary {
 
     public void setBookName(String bookName) {
         this.bookName = bookName;
-    }
-
-    public int getWordsInBook() {
-        return wordsInBook;
-    }
-
-    public void setWordsInBook(int wordsInBook) {
-        this.wordsInBook = wordsInBook;
     }
 
     public Author getAuthor() {
@@ -79,7 +77,6 @@ public class BookFromLibrary {
         return "BookFromLibrary{" +
                 "id=" + id +
                 ", bookName='" + bookName + '\'' +
-                ", wordsInBook=" + wordsInBook +
                 ", author=" + author +
                 ", fileName='" + fileName + '\'' +
                 ", pathToFile='" + pathToFile + '\'' +

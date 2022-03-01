@@ -36,7 +36,6 @@ public class ServletContextListenerImpl implements ServletContextListener {
 		} catch (Exception ex) {
 			LOGGER.error("Cannot configure Log4j", ex);
 		}
-		System.out.println("Log4J initialization finished");
 		LOGGER.debug("Log4j has been initialized");
 	}
 

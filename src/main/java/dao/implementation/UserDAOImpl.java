@@ -7,8 +7,8 @@ import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
 
+import constants.Query;
 import dao.ConnectionPool;
-import dao.Query;
 import dao.UserDAO;
 import entity.Role;
 import entity.User;
@@ -75,7 +75,11 @@ public class UserDAOImpl implements UserDAO {
 			prepSttmnt.setString(4, user.getRole().getName());
 			prepSttmnt.setString(5, user.getEmail());
 
-			prepSttmnt.executeUpdate();
+			int affectedRows = prepSttmnt.executeUpdate();
+
+			if(affectedRows == 0){
+				throw new SQLException("User saving wasn't succesful");
+			}
 
 			LOGGER.debug("user: " + user.getUsername() + " added");
 		} catch (SQLException e) {
@@ -94,7 +98,11 @@ public class UserDAOImpl implements UserDAO {
 
 			prepSttmnt.setInt(1, userID);
 
-			prepSttmnt.executeUpdate();
+			int affectedRows = prepSttmnt.executeUpdate();
+
+			if(affectedRows == 0){
+				throw new SQLException("User deleting wasn't succesful");
+			}
 			LOGGER.debug("user: " + userID + " deleted");
 
 		} catch (SQLException e) {
@@ -124,6 +132,7 @@ public class UserDAOImpl implements UserDAO {
 	/**
 	 * Closing connection(if exists)
 	 */
+	@Override
 	public void closeConnection() {
 		if (connection != null) {
 			try {

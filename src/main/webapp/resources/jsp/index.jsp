@@ -7,6 +7,7 @@
 <html>
 <head>
 <title>Home</title>
+<meta http-equiv="cache-control" content="no-cache" />
 <%@ include file="/resources/jspf/page_head.jspf"%>
 </head>
 <body>
@@ -14,7 +15,7 @@
 	<div class="container-sm text-center">
 
 		<%@ include file="/resources/jspf/navigation.jspf"%>
-	
+
 		<h3 class="mt-5">Uploaded books</h3>
 		
 		<table class="table">
@@ -27,37 +28,38 @@
 					<th scope="col">Delete book</th>
 				</tr>
 			</thead>
-			<%-- <tbody>
-				<tr th:each="book, iter:${books}">
-					<th scope="row" th:utext="${iter.count}">...</th>
-					<td th:text="${book.bookName}">...</td>
-					<td th:text="${book.author.fullName}">...</td>
-					<td sec:authorize="isAuthenticated()"><a
-						th:href="@{/bookInfo/{id}(id=${book.id})}">Info</a></td>
-					<td sec:authorize="!isAuthenticated()">For authorized users</td>
-					<td style="text-align: center"><a
-						th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>
-				</tr>
-			</tbody> --%>
+			<tbody>
+
+				<c:forEach items="${allBooks }" var="book">
+					<tr>
+						<th>${allBooks.indexOf(book)}</th>
+						<td>${book.bookName}</td>
+						<td>${book.author.firstName}  ${book.author.lastName}</td>
+						<td><c:choose>
+								<c:when test="${!empty userRole}">
+									<a href="controller?command=bookInfo&bookId=${book.id}">Get
+										info</a>
+								</c:when>
+								<c:otherwise>Please log in</c:otherwise>
+							</c:choose></td>
+						<td><c:choose>
+								<c:when test="${userRole == 'admin'}">
+									<form action="controller?command=deleteBook&bookId=${book.id}"
+										method="post">
+										<input class="btn btn-secondary" type="submit"
+											value="delete book">
+									</form>
+								</c:when>
+								<c:otherwise>Admin only</c:otherwise>
+							</c:choose></td>
+					</tr>
+				</c:forEach>
+
+			</tbody>
 		</table>
 	</div>
 
-<%-- 	<c:choose>
-		<c:when test="${empty userRole}">
-			<form action="controller">
-				<c:set var="userRole" scope="session" value="client"></c:set>
-				<input type="submit" value="Become client">
-			</form>
-		</c:when>
-		<c:otherwise>
-			<form action="controller">
-				<c:set var="userRole" scope="session" value=""></c:set>
-				<input type="submit" value="unlog">
-			</form>
-		</c:otherwise>
-	</c:choose> --%>
-
-<%@ include file="/resources/jspf/bootstrap_scripts.jspf"%>
+	<%@ include file="/resources/jspf/bootstrap_scripts.jspf"%>
 
 </body>
 </html>

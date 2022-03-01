@@ -3,13 +3,13 @@ package command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import constants.Path;
 import dao.UserDAO;
 import dao.implementation.UserDAOImpl;
 import entity.Role;
 import entity.User;
 import validation.RegistrationValidator;
 import web.ActionType;
-import web.Path;
 
 public class RegistrationCommand implements Command {
 

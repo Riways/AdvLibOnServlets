@@ -8,11 +8,24 @@ body{
 }
 
 
-/*div, h1, body, nav, ul, img, form, input{*/
-/*	border: crimson solid 1px;*/
-/*}*/
+/* div, h1, body, nav, ul, img, form, input, th, td{
+	border: crimson solid 1px;
+}  */
 
+th, td{
+	vertical-align: middle;
+}
 
+#status-found{
+	background-color: #7bf282;
+	width:10px;
+	height: 10px
+}
+#status-not-found{
+	background-color: #ff7979;
+	width:10px;
+	height: 10px
+}
 
 #login-form , #registration-form{
 	background-color: white;

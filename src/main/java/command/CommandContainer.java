@@ -12,6 +12,10 @@ public class CommandContainer {
 		commands.put("login", new LoginCommand());
 		commands.put("registration", new RegistrationCommand());
 		commands.put("logout", new LogoutCommand());
+		commands.put("uploadBook", new UploadBookCommand());
+		commands.put("success", new SuccessCommand());
+		commands.put("bookInfo", new BookInfoCommand());
+		commands.put("deleteBook", new DeleteBookComand());
 	}
 	
 	public static Command getCommand(String commandName) {
