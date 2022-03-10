@@ -15,11 +15,29 @@
 
 		<%@ include file="/resources/jspf/navigation.jspf"%>
 
+
+		<h3>
+			Book: <span>${bookName}</span>
+		</h3>
+		
+		
+		
+		<div class="dropdown position-absolute start-20">
+			<button class="btn btn-secondary dropdown-toggle" type="button"
+				id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false">Sort by</button>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<a class="dropdown-item" href="controller?command=bookInfo&bookId=${param.bookId}&sortBy=alphabet">Alphabet</a> <a
+					class="dropdown-item" href="controller?command=bookInfo&bookId=${param.bookId}&sortBy=oxf">Not available in oxford3000</a> <a
+					class="dropdown-item" href="controller?command=bookInfo&bookId=${param.bookId}&sortBy=counter">Counter</a>
+			</div>
+		</div>
+		<br>
+		<br>
+		
 		<div style="height: 600px; overflow: auto">
 
-			<h3>
-				Book: <span>${bookName}</span>
-			</h3>
+
 
 			<table class="table" style="height: 601px">
 				<thead>
@@ -48,7 +66,6 @@
 							</td>
 						</tr>
 					</c:forEach>
-
 				</tbody>
 			</table>
 
